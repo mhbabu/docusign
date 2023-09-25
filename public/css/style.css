@@ -1,0 +1,349 @@
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0; 
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    /*Image only BG fallback*/
+    
+    /*background = gradient + image pattern combo*/
+    /* background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6)); */
+}
+
+body {
+    font-family: montserrat, arial, verdana;
+}
+/*form styles*/
+#msform {
+    width: 980px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+#msform fieldset {
+    background: #ebe8e8;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+#msform .action-button {
+    width: 100px;
+    background: #27AE60;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 12.5%;
+    float: left;
+    position: relative;
+}
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 20px;
+    line-height: 20px;
+    display: block;
+    font-size: 10px;
+    color: #333;
+    background: white;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+    background: #27AE60;
+    color: white;
+}
+
+
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flex-container {
+    display: flex;
+/*  flex-wrap: nowrap;*/
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.form-check {
+    padding: 10px;
+}
+
+
+.form-container {
+    background-color: #ebe8e8;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 714px;
+    /*justify-content: center;
+    align-items: center;*/
+}
+.form-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.input-group {
+    margin-left: 20px;
+    text-align: left;
+}
+
+/*inputs*/
+/*#msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}*/
+/*buttons*/
+
+/* .form-container input, .form-container select {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #2C3E50;
+    box-sizing: border-box;
+    font-family: montserrat;
+} */
+
+/*button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+}*/
+
+/*Model Experience*/
+.row {
+    width: 100%;
+}
+.col-6 {
+    width: 50%;
+}
+.model-ex input {
+    height: 17px;
+    width: 20px;
+}
+.model-ex span {
+    font-size: 20px;
+}
+.resize input {
+    width: 330px !important;
+    height: 40px;
+}
+.file input {
+    width:646px;
+    height: 42px;
+}
+.stat-input input {
+    width: 700px ;
+}
+.qa-select {
+    width: 700px !important;
+}
+
+.upload-container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 675px;
+/*    height: 110px;*/
+    text-align: center;
+}
+
+.upload-container h1 {
+    margin: 0 0 10px;
+}
+
+.upload-container p {
+    margin-bottom: 20px;
+    color: #888;
+}
+
+/*input[type="file"] {
+    display: none;
+}*/
+
+#image-preview {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-preview-item {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+.image-preview-item img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/*Scrollable section*/
+/* Box styles */
+.myBox {
+    border: none;
+    padding: 5px;
+    font: 16px/24px sans-serif;
+    width: 720px;
+    height: 300px;
+    overflow: scroll;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid yellowgreen;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: yellowgreen;  
+border-radius: 10px;
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+.scrollable p {
+    text-align: start;
+}
+.scrollable h3 {
+    margin-top: 10px;
+} */
+
+/*Signature*/
+.signature-container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+    position: relative;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    padding-top: 66.67%; /* Maintain a 3:2 aspect ratio for the canvas */
+}
+
+canvas {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.signature-container button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
