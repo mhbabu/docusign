@@ -44,7 +44,7 @@
                             <label>{!! Form::checkbox('couple', 'Couple', false,['class'=> 'mr-2'])!!} Couple</label>
                         </div>
                         <div class="checkbox">
-                            <label>{!! Form::checkbox('transgender', 'Transgender', false,['class'=> 'mr-2'])!!} Magazine Model</label>
+                            <label>{!! Form::checkbox('transgender', 'Transgender', false,['class'=> 'mr-2'])!!} Transgender</label>
                         </div>
                     </div>
                 </div>

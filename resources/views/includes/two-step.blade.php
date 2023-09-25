@@ -89,11 +89,11 @@
             </div>
 
             <div class="col-md-6 form-group">
-                {!! Form::label('companion_experience', 'Do you have experience as a companion?', ['class' => 'required-star']) !!}
+                {!! Form::label('companion_experience', 'Do you have experience as a companion?') !!}
                 {!! Form::select('companion_experience',['Yes' => 'Yes', 'No'],'',['class'=>$errors->has('companion_experience')?'form-control is-invalid':'form-control required','placeholder'=>'---']) !!}
             </div>
             <div class="col-md-6 form-group">
-                {!! Form::label('time_length_experience', 'What is the time length of your experience?', ['class' => 'required-star']) !!}
+                {!! Form::label('time_length_experience', 'What is the time length of your experience?') !!}
                 {!! Form::text('time_length_experience','',['class'=>$errors->has('time_length_experience')?'form-control is-invalid':'form-control required','placeholder'=>'Type Here']) !!}
             </div>
 
