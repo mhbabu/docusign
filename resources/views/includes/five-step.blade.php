@@ -36,7 +36,7 @@
                 {!! Form::number('hours_5','',['class'=>$errors->has('hours_5')?'form-control is-invalid':'form-control required','placeholder'=>'Type Here']) !!}
             </div>
             <div class="col-md-6 form-group">
-                {!! Form::label('overnight_8_hours','OverNight (8 Hours):',['class'=>'required-star']) !!}
+                {!! Form::label('overnight_8_hours','Over Night (8 Hours):',['class'=>'required-star']) !!}
                 {!! Form::number('overnight_8_hours','',['class'=>$errors->has('overnight_8_hours')?'form-control is-invalid':'form-control required','placeholder'=>'Type Here']) !!}
             </div>
 
