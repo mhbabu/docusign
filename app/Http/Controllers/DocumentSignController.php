@@ -55,16 +55,6 @@ class DocumentSignController extends Controller
 
         $signatureStatus = $request->input('signature_status');
 
-
-        // $signatureImage = $request->input('signatureImage');
-
-        // // Convert the base64-encoded signature image to a file and save it
-        // $signatureImageFile = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $signatureImage));
-        // $signatureImagePath = storage_path('app/public/signature.png');
-        // file_put_contents($signatureImagePath, $signatureImageFile);
-
-
-
         if ($signatureStatus == 'Digital Signature') {
             $signatureImage = $request->input('signatureImage');
             $signatureImageFile = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $signatureImage));
@@ -78,8 +68,6 @@ class DocumentSignController extends Controller
             $signatureImagePath = storage_path('app/public/signature.png');
             file_put_contents($signatureImagePath, $signatureImageFile);
         }
-
-
 
         if ($request->hasFile('imageFileOfId')) {
             $imageFile = $request->file('imageFileOfId');
