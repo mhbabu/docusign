@@ -41,7 +41,7 @@
             </div>
 
             <div class="col-md-12 form-group">
-                {!! Form::label('overday_12_hours','Over Night (8 Hours):',['class'=>'required-star']) !!}
+                {!! Form::label('overday_12_hours','Over Day (12 Hours):',['class'=>'required-star']) !!}
                 {!! Form::number('overday_12_hours','',['class'=>$errors->has('overday_12_hours')?'form-control is-invalid':'form-control required','placeholder'=>'Type Here']) !!}
             </div>
         </div>
