@@ -45,7 +45,7 @@
     <p><strong>Model Tours:</strong> {{ isset($formData['model_tour']) ? $formData['model_tour'] : null }} </p>
     <p><strong>Are you an adult film star:</strong> {{ isset($formData['adult_film_star']) ? $formData['adult_film_star'] : null }} </p>
     <p><strong>Experience as a companion:</strong> {{ isset($formData['companion_experience']) ? $formData['companion_experience'] : null }} </p>
-    <p><strong>Experience time lenth:</strong> {{ isset($formData['time_length_experience']) ? $formData['time_length_experience'] : null }} </p>
+    <p><strong>Experience time length:</strong> {{ isset($formData['time_length_experience']) ? $formData['time_length_experience'] : null }} </p>
     <p><strong>List of resume highlights:</strong> {{ isset($formData['resume_highlight']) ? $formData['resume_highlight'] : null }} </p>
     <p><strong>Free one's Profile URL:</strong> {{ isset($formData['profile_url']) ? $formData['profile_url'] : null }} </p>
     
@@ -66,18 +66,17 @@
     <p><strong>Eye Color:</strong> {{ isset($formData['eye_color']) ? $formData['eye_color'] : null }} </p>
     <p><strong>Tattoos:</strong> {{ isset($formData['tatoos']) ? $formData['tatoos'] : null }} </p>
     
-
     <h2>Your Donation For:</h2>
     
-    <p><strong>30 Mins:</strong> {{ isset($formData['mins_90']) ? $formData['mins_90'] : null }} </p>
-    <p><strong>One Hour:</strong> {{ isset($formData['hour_1']) ? $formData['hour_1'] : null }} </p>
-    <p><strong>Ninety Mins:</strong> {{ isset($formData['mins_90']) ? $formData['mins_90'] : null }} </p>
-    <p><strong>Two Mins:</strong> {{ isset($formData['hours_2']) ? $formData['hours_2'] : null }} </p>
-    <p><strong>Three Mins:</strong> {{ isset($formData['hours_3']) ? $formData['hours_3'] : null }} </p>
-    <p><strong>Four Mins:</strong> {{ isset($formData['hours_4']) ? $formData['hours_4'] : null }} </p>
-    <p><strong>Five Mins:</strong> {{ isset($formData['hours_5']) ? $formData['hours_5'] : null }} </p>
-    <p><strong>OverNight:</strong> {{ isset($formData['overnight_8_hours']) ? $formData['overnight_8_hours'] : null }} </p>
-    <p><strong>OveerDay:</strong> {{ isset($formData['overday_8_hours']) ? $formData['overday_8_hours'] : null }} </p>
+    <p><strong>30 Mins:</strong> {{ isset($formData['mins_30']) ? $formData['mins_30'] : null }} </p>
+    <p><strong>1 Hour:</strong> {{ isset($formData['hour_1']) ? $formData['hour_1'] : null }} </p>
+    <p><strong>90 Mins:</strong> {{ isset($formData['mins_90']) ? $formData['mins_90'] : null }} </p>
+    <p><strong>2 Hours:</strong> {{ isset($formData['hours_2']) ? $formData['hours_2'] : null }} </p>
+    <p><strong>3 Hours:</strong> {{ isset($formData['hours_3']) ? $formData['hours_3'] : null }} </p>
+    <p><strong>4 Hours:</strong> {{ isset($formData['hours_4']) ? $formData['hours_4'] : null }} </p>
+    <p><strong>5  Hours:</strong> {{ isset($formData['hours_5']) ? $formData['hours_5'] : null }} </p>
+    <p><strong>Over Night (8 Hours):</strong> {{ isset($formData['overnight_8_hours']) ? $formData['overnight_8_hours'] : null }} </p>
+    <p><strong>Over Day (12 Hours):</strong> {{ isset($formData['overday_12_hours']) ? $formData['overday_12_hours'] : null }} </p>
 
 
     <h2>Social Networks Accts:</h2>
