@@ -38,7 +38,7 @@
                 {!! Form::text('eye_color','',['class'=>$errors->has('eye_color')?'form-control is-invalid':'form-control required','placeholder'=>'Type Here']) !!}
             </div>
 
-            <div class="col-md-12 form-group">
+            <div class="col-md-6 form-group">
                 {!! Form::label('tatoos','Tatoos',['class'=>'required-star']) !!}
                 {!! Form::text('tatoos','',['class'=>$errors->has('tatoos')?'form-control is-invalid':'form-control required','placeholder'=>'Type Here']) !!}
             </div>

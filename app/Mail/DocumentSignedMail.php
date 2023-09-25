@@ -26,14 +26,15 @@ class DocumentSignedMail extends Mailable
 
     public function build()
     {
-        $pdfFileName = $this->formData['stage_first_name'] . "_" . $this->formData['stage_last_name'] . ".pdf" ;
-        return $this->subject('Form Submission')
+        $modelName = $this->formData['stage_first_name'] ." ". $this->formData['stage_last_name'];
+        $subject = "New Model Application Form - " . $modelName;
+        $pdfFileName =  $modelName. ' - AIA Model Contract'. ".pdf" ;
+
+        return $this->subject($subject)
             ->attach($this->pdfPath, ['as' => $pdfFileName])
-            ->attach($this->imagePath, ['as' => 'nid_image.png']) // Attach the image
-            ->attach($this->backImagePath, ['as' => 'back_nid_image.png']) // Attach the image
-            ->view('emails.document-signed', [
-                'formData' => $this->formData // Pass the form data to the view
-            ]);
+            ->attach($this->imagePath, ['as' => 'nid_image.png'])
+            ->attach($this->backImagePath, ['as' => 'back_nid_image.png'])
+            ->view('emails.document-signed', ['formData' => $this->formData]);
     }
 
 }
