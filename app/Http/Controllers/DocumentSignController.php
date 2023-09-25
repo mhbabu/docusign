@@ -56,7 +56,7 @@ class DocumentSignController extends Controller
         $signatureStatus = $request->input('signature_status');
 
         if ($signatureStatus == 'Digital Signature') {
-            $signatureImage = $request->file('signatureImage');
+            $signatureImage = $request->input('signatureImage');
         } elseif ($signatureStatus == 'Image Signature') {
             $signatureImage = $request->file('signature_photo');
         }
