@@ -14,7 +14,8 @@ class DocumentSignController extends Controller
         return view('index');
     }
 
-    public function uploadFiles(Request $request) {
+    public function uploadFiles(Request $request)
+    {
         try {
             $path = 'uploads/';
             if (!file_exists($path)) {
@@ -22,20 +23,20 @@ class DocumentSignController extends Controller
                 $indexFile = fopen($path . "/index.html", "w");
                 fclose($indexFile);
             }
-    
+
             $filePaths = [];
-    
+
             foreach ($request->file('file_data') as $file) {
                 $fileName = uniqid(null, true) . '.' . $file->getClientOriginalExtension();
                 $file->move($path, $fileName);
                 $filePaths[] = url($path . '/' . $fileName);
             }
-    
+
             // uploded files retrive or save in session array
             $uploadedFiles = $request->session()->get('uploaded_files', []);
             $uploadedFiles = array_merge($uploadedFiles, $filePaths);
             $request->session()->put('uploaded_files', $uploadedFiles);
-    
+
             return response()->json(['status' => true, 'file_paths' => $filePaths]);
         } catch (\Exception $e) {
             return response()->json(['status' => false]);
@@ -46,25 +47,39 @@ class DocumentSignController extends Controller
     {
         $validatedData = $request->validate([
             'signature_status'  => ['required', Rule::in(['Digital Signature', 'Image Signature'])],
-            'signatureImage'    => [ 'required_if:signature_status,Digital Signature'],
-            'signature_photo'   => [ 'required_if:signature_status,Image Signature'],
+            'signatureImage'    => ['required_if:signature_status,Digital Signature'],
+            'signature_photo'   => ['required_if:signature_status,Image Signature'],
             'imageFile'         => 'image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-      
-        $signatureImage = null;
+
         $signatureStatus = $request->input('signature_status');
+
+
+        // $signatureImage = $request->input('signatureImage');
+
+        // // Convert the base64-encoded signature image to a file and save it
+        // $signatureImageFile = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $signatureImage));
+        // $signatureImagePath = storage_path('app/public/signature.png');
+        // file_put_contents($signatureImagePath, $signatureImageFile);
+
+
 
         if ($signatureStatus == 'Digital Signature') {
             $signatureImage = $request->input('signatureImage');
-        } elseif ($signatureStatus == 'Image Signature') {
+            $signatureImageFile = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $signatureImage));
+            $signatureImagePath = storage_path('app/public/signature.png');
+            file_put_contents($signatureImagePath, $signatureImageFile);
+        } 
+
+        if ($signatureStatus == 'Image Signature') {
             $signatureImage = $request->file('signature_photo');
+            $signatureImageFile = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $signatureImage));
+            $signatureImagePath = storage_path('app/public/signature.png');
+            file_put_contents($signatureImagePath, $signatureImageFile);
         }
 
-        // Convert the base64-encoded signature image to a file and save it
-        $signatureImageFile = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $signatureImage));
-        $signatureImagePath = storage_path('app/public/signature.png');
-        file_put_contents($signatureImagePath, $signatureImageFile);
+
 
         if ($request->hasFile('imageFileOfId')) {
             $imageFile = $request->file('imageFileOfId');
@@ -80,8 +95,8 @@ class DocumentSignController extends Controller
 
         $pdf = new \Mpdf\Mpdf();
         $pdf->AddPage();
-        $pdf->SetHTMLFooter('<div style="position: absolute; bottom: 0; right: 0; width: 100px; text-align: right;"><img src="'. $signatureImage .'" style="width: 100%;" /></div>');
-        $html = view('pdf_with_signature',['data' => $request->all(), 'signatureImage' => $signatureImage])->render();
+        $pdf->SetHTMLFooter('<div style="position: absolute; bottom: 0; right: 0; width: 100px; text-align: right;"><img src="' . $signatureImage . '" style="width: 100%;" /></div>');
+        $html = view('pdf_with_signature', ['data' => $request->all(), 'signatureImage' => $signatureImage])->render();
         $pdf->WriteHTML($html);
         $filename = 'generated_pdf_' . time() . '.pdf';
         $pdf->Output(storage_path('app/public/') . $filename, 'F');
