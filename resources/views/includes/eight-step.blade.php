@@ -20,10 +20,10 @@
                 <div class="form-group">
                     {!! Form::label('signature_photo', 'Signature Photo :') !!}
                     <br>
-                    <img class="border border-white" src="{{ url('img/photo.png') }}" id="photoViewer" height="250" width="100%">
+                    <img class="border border-white img-view" src="{{ url('img/photo.png') }}" height="250" width="100%">
 
                     <label class="btn btn-block btn-secondary btn-sm rounded-0" style="width: 100%; cursor: pointer">
-                        <input onchange="changePhoto(this)" type="file" name="signature_photo" style="display: none" accept="image/png,image/jpeg,image/jpg">
+                        <input class="img-file" type="file" name="signature_photo" style="display: none" accept="image/png,image/jpeg,image/jpg">
                         <i class="fa fa-upload"></i> Upload
                     </label>
                     <span id="photo_err" class="text-danger" style="font-size: 16px;"></span>

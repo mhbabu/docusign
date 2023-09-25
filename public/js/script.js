@@ -85,8 +85,6 @@ function validateStep2() {
 
 // Validation function for the third step
 function validateStep3() {
-
-    // return true;
     
     var over_eighteen = $("input[name='over_eighteen']:checked").val();
 
@@ -94,7 +92,6 @@ function validateStep3() {
         alert("Please confirm that you are over 18.");
         return false;
     }
-
 
     var imageFileOfId = $("input[name='imageFileOfId']")[0].files;
     if (imageFileOfId.length === 0) {

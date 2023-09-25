@@ -6,7 +6,13 @@
 @endsection
 @section('content')
     <div class="container">
-        {!! Form::open(['route' => 'document.submit', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dataForm', 'id' => 'msform']) !!}
+        {!! Form::open([
+            'route' => 'document.submit',
+            'method' => 'POST',
+            'enctype' => 'multipart/form-data',
+            'class' => 'dataForm',
+            'id' => 'msform',
+        ]) !!}
         <!-- progressbar -->
         <ul id="progressbar">
             <li class="active">First Setup</li>
@@ -37,9 +43,8 @@
     {!! Toastr::message() !!}
 
     <script type="text/javascript">
-
         /*********************************************
-         FRIST STEP OTHER FIELD SCRIPTING START HERE 
+        FRIST STEP OTHER FIELD SCRIPTING START HERE 
         **********************************************/
         $(".other-profession-div").hide();
         $(".other-profession").change(function() {
@@ -78,10 +83,10 @@
             if (value == 'Digital Signature') {
                 $(".digital-signature").show();
                 $(".img-signature").hide();
-            } else if(value == 'Image Signature') {
+            } else if (value == 'Image Signature') {
                 $(".digital-signature").hide();
                 $(".img-signature").show();
-            }else{
+            } else {
                 $(".digital-signature").hide();
                 $(".img-signature").hide();
             }
@@ -90,21 +95,33 @@
         /*****************************************
          SIGNATURE PHOTO UPLOAD SRIPT START HERE
         *******************************************/
-        function changePhoto(input) {
-            if (input.files && input.files[0]) {
-                $("#photo_err").html('');
-                let mime_type = input.files[0].type;
+        $(document).on("change", ".img-file", function() {
+            let parentHtml = $(this).parent().parent();
+            let image = parentHtml.find('.img-view');
+            if (this.files && this.files[0]) {
+                let mime_type = this.files[0].type;
                 if (!(mime_type == 'image/jpeg' || mime_type == 'image/jpg' || mime_type == 'image/png')) {
-                    $("#photo_err").html("Image format is not valid. Only PNG or JPEG or JPG or PDF file are allowed.");
+                    swal("Invalid file format Only jpg jpeg png is allowed");
+                    this.value = null;
+                    $(this).prop('required', true);
+                    image.attr('src', '/img/photo.png');
+                    return false;
+                }
+                let size = this.files[0].size;
+                if (size > 3000000) {
+                    swal("Please upload image must less than 1MB!!");
+                    this.value = null;
+                    $(this).prop('required', true);
+                    image.attr('src', '/img/photo.png');
                     return false;
                 }
                 let reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#photoViewer').attr('src', e.target.result);
+                    image.attr('src', e.target.result);
                 };
-                reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(this.files[0]);
             }
-        }
+        });
 
 
         /******************************************
@@ -148,8 +165,12 @@
                         if (response.status) {
                             $(input).parent().parent().find('.uploaded-file').html('');
                             $.each(response.file_paths, function(index, value) {
-                                var anchor = $(`<a class="btn btn-primary btn-sm m-1" href="${value}" target="_blank">File ${index+1}</a>`);
-                                var input = $(`<input type="hidden" name="uploaded_images[]" value="${value}" />`);
+                                var anchor = $(
+                                    `<a class="btn btn-primary btn-sm m-1" href="${value}" target="_blank">File ${index+1}</a>`
+                                );
+                                var input = $(
+                                    `<input type="hidden" name="uploaded_images[]" value="${value}" />`
+                                );
                                 $('.uplodedImages').append(anchor);
                                 $('.uploded-inputs').append(input);
                             });

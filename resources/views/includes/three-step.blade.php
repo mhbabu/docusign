@@ -13,21 +13,26 @@
                         <label class="form-check-label" for="overEghiteenNo">No</label>
                     </div>
                 </div>
-                <div class="col-md-12 form-group">
-                    <div class="input-group mb-3">
-                        {!! Form::label('imageFileOfId', 'Submit form of ID: Passport or Driver’s Licence for Proof of Age', ['class' => 'required-star']) !!}
-                        <div class="file">
-                            {!! Form::file('imageFileOfId',['accept'=>'image/jpg, image/jpeg, image/png']) !!}
-                        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('imageFileOfId', "Submit form of ID: Passport or Driver’s Licence for Proof of Age", ['class' => 'required-star']) !!}
+                        <br>
+                        <img class="border border-white img-view" src="{{ url('img/photo.png') }}" height="250" width="100%" />
+                        <label class="btn btn-block btn-secondary btn-sm rounded-0" style="width: 100%; cursor: pointer">
+                            <input class="img-file" type="file" name="imageFileOfId" style="display: none" accept="image/png,image/jpeg,image/jpg">
+                            Upload
+                        </label>
                     </div>
                 </div>
-
-                <div class="col-md-12 form-group">
-                    <div class="input-group mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
                         {!! Form::label('imageBackOfId', 'We must also have a picture of the back of your ID', ['class' => 'required-star']) !!}
-                        <div class="file">
-                            {!! Form::file('imageBackOfId',['accept'=>'image/jpg, image/jpeg, image/png']) !!}
-                        </div>
+                        <br>
+                        <img class="border border-white img-view" src="{{ url('img/photo.png') }}" height="250" width="100%" />
+                        <label class="btn btn-block btn-secondary btn-sm rounded-0" style="width: 100%; cursor: pointer">
+                            <input class="img-file" class="file" type="file" name="imageBackOfId" style="display: none" accept="image/png,image/jpeg,image/jpg">
+                            Upload
+                        </label>
                     </div>
                 </div>
             </div>
