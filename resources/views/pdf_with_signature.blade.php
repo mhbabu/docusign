@@ -42,10 +42,8 @@
             of which are hereby acknowledged, “Alluring Intros and Arrangements” (hereinafter “Company”), a business
             entity operating an interactive internet website providing interpersonal introduction services by and
             through the operation thereof which is commonly known by and accessible under the same name, and
-            _______________{{ isset($data['legal_first_name']) ? $data['legal_first_name'] . ' ' : null }}
-            {{ isset($data['legal_last_name']) ? $data['legal_last_name'] : null }}_______________, a
-            natural person and current resident of
-            _____________{{ isset($data['base_city']) ? $data['base_city'] : null }}___________ and an independent
+            <strong style="font-weight: bold; text-decoration: underline"> {{ isset($data['legal_first_name']) ? $data['legal_first_name'] . ' ' : null }}  {{ isset($data['legal_last_name']) ? $data['legal_last_name'] : null }}</strong>, a
+            natural person and current resident of <strong style="font-weight: bold; text-decoration: underline">{{ isset($data['base_city']) ? $data['base_city'] : null }}</strong> and an independent
             contractor as set forth hereinbelow (hereinafter “Contractor”), collectively (“the Parties”), hereby
             mutually contract, covenant and agree as follows:
         </p>
@@ -129,6 +127,7 @@
         <p>
             [DATE] <span style="margin-left: 1em"> {{ now()->format('d/m/Y') }}</span><br />
             [SIGNATURES] <div style="margin-left: 1em"> <img src="{{ $signatureImage }}" height="40" width="60" alt="Signature" /></div>
+            [NOTARY JURAT] <br />
             [CONTRACTOR INITIAL EVERY PAGE]
         </p>
         <p>10161 West Park Run Drive Suite 150 Las Vegas, NV 89145</p>
